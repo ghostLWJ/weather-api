@@ -6,7 +6,5 @@ export class WeatherController {
   constructor(private weatherService: WeatherService) {}
 
   @Get()
-  search() {
-
-  }
+  async search(): Promise<any> {}
 }
