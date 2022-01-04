@@ -1,5 +1,4 @@
 import { Connection } from "mongoose";
-import { Schema } from "mongoose";
 import { MONGO_CONNECTION, WEATHER_MODEL } from "./const";
 import { WeatherSchema } from "./schemas/weather.schema";
 
