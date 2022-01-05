@@ -1,7 +1,9 @@
-import { Body, Controller, Get, Post } from '@nestjs/common';
+import { Body, Controller, Get, Post, UsePipes } from '@nestjs/common';
 import { AuthService } from './module/auth/auth.service';
 import { CreateOrUpdateWeatherDto } from './module/weather/dto/create-or-update-weather.dto';
 import { WeatherService } from './module/weather/weather.service';
+import { JoiValidationPipe } from './pipe/joi-validation.pipe';
+import { createOrUpdateWeatherSchema } from './schema/create-or-update-weather.schema';
 
 @Controller()
 export class AppController {
@@ -16,6 +18,7 @@ export class AppController {
     }
 
     @Post('weather/create')
+    @UsePipes(new JoiValidationPipe(createOrUpdateWeatherSchema))
     async create(@Body() createOrUpdateWeatherDto: CreateOrUpdateWeatherDto): Promise<any> {
         this.weatherService.createOrUpdate(createOrUpdateWeatherDto)
     }

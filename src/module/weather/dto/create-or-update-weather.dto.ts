@@ -10,5 +10,5 @@ export class CreateOrUpdateWeatherDto {
     city: String;
     citySn: String;
     town: String;
-    townSn: String
+    townSn: String;
 }
