@@ -1,5 +1,6 @@
 import { Injectable } from "@nestjs/common";
 import { JwtService } from "@nestjs/jwt";
+import * as net from 'net'
 
 @Injectable()
 export class AuthService {
@@ -7,7 +8,11 @@ export class AuthService {
 
     }
 
-    async validateRequest(): Promise<any> { }
+    async validateRequest(ip: string): Promise<any> { 
+        const isIpResult = net.isIP(ip);
+
+        return [4, 6].includes(isIpResult);
+    }
 
     async generateTemporaryPassport(ip: string): Promise<any> {
         const payload = { ip };
