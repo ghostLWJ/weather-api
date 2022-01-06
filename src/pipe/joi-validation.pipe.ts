@@ -1,8 +1,8 @@
 import { ArgumentMetadata, BadRequestException, PipeTransform } from "@nestjs/common";
-import { ObjectSchema } from "joi";
+import { AnySchema, ObjectSchema } from "joi";
 
 export class JoiValidationPipe implements PipeTransform {
-    constructor(private schema: ObjectSchema) { }
+    constructor(private schema: AnySchema) { }
 
     transform(value: any, metadata: ArgumentMetadata) {
         const { error, value: valueSchema } = this.schema.validate(value);
