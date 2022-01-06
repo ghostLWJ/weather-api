@@ -1,4 +1,4 @@
-import { Body, Controller, Get, Param, Post, UsePipes } from '@nestjs/common';
+import { Body, Controller, Get, Ip, Param, Post, UsePipes } from '@nestjs/common';
 import { AuthService } from '../services/auth.service';
 import { CreateOrUpdateWeatherDto } from '../dto/create-or-update-weather.dto';
 import { WeatherService } from '../services/weather.service';
@@ -27,7 +27,7 @@ export class AppController {
     }
 
     @Post('token/generate')
-    async login(): Promise<any> {
-        return this.authService.generateTemporaryPassport();
+    async login(@Ip() ip): Promise<any> {
+        return this.authService.generateTemporaryPassport(ip);
     }
 }
