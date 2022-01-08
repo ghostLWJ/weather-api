@@ -8,6 +8,7 @@ import { searchWeatherSchema } from 'src/schema/search-weather.schema';
 import { FirstCharUppercasePipe } from 'src/pipe/first-char-uppercase.pipe';
 import { JwtAuthGuard } from 'src/guards/jwt-auth.guard';
 import { ApiBearerAuth } from '@nestjs/swagger';
+import { CityNameMappingPipe } from 'src/pipe/city-name-mapping-pipe';
 
 @Controller()
 export class AppController {
@@ -20,7 +21,7 @@ export class AppController {
     @Get('weather/search/:city')
     @UseGuards(JwtAuthGuard)
     @UsePipes(new JoiValidationPipe(searchWeatherSchema))
-    async search(@Param('city', new FirstCharUppercasePipe()) city: string): Promise<any> {
+    async search(@Param('city', new FirstCharUppercasePipe(), CityNameMappingPipe) city: string): Promise<any> {
         return this.weatherService.findAll(city);
     }
 
@@ -28,7 +29,7 @@ export class AppController {
     @UsePipes(new JoiValidationPipe(createOrUpdateWeatherSchema))
     async create(@Body() createOrUpdateWeatherDto: CreateOrUpdateWeatherDto): Promise<any> {
         throw new Error('API weather/create is closed');
-        
+
         this.weatherService.createOrUpdate(createOrUpdateWeatherDto)
     }
 
