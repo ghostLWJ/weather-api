@@ -1,8 +1,8 @@
 import * as mongoose from 'mongoose'
 
 export const WeatherSchema = new mongoose.Schema({
-    lat: Number,
-    lon: Number,
+    lat: String,
+    lon: String,
     locationName: String,
     stationId: String,
     obsTime: Date,

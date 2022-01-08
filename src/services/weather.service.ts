@@ -16,11 +16,13 @@ export class WeatherService {
         spec.city = city;
 
         return this.weatherModel.find(spec.GetPredicate().getCondition()).exec();
+        
+        // TODO: maybe cache result(with expire) for next time query same condition
     }
 
     async createOrUpdate(createOrUpdateWeatherDto: CreateOrUpdateWeatherDto): Promise<Weather> {
-        const createdWeather = new this.weatherModel(createOrUpdateWeatherDto);
+        const weatherOperPromise = this.weatherModel.findOneAndUpdate({ citySn: createOrUpdateWeatherDto.citySn, townSn: createOrUpdateWeatherDto.townSn }, createOrUpdateWeatherDto, { upsert: true });
 
-        return createdWeather.save();
+        return weatherOperPromise;
     }
 }
