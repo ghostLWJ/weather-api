@@ -24,9 +24,11 @@ export class AppController {
         return this.weatherService.findAll(city);
     }
 
-    @Post('weather/create')
+    // @Post('weather/create')
     @UsePipes(new JoiValidationPipe(createOrUpdateWeatherSchema))
     async create(@Body() createOrUpdateWeatherDto: CreateOrUpdateWeatherDto): Promise<any> {
+        throw new Error('API weather/create is closed');
+        
         this.weatherService.createOrUpdate(createOrUpdateWeatherDto)
     }
 
