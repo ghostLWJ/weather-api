@@ -23,3 +23,6 @@ npm i
 
 npm run start:dev
 ```
+
+## Swagger UI
+While the application is running, open your browser and navigate to http://localhost:3000/api
