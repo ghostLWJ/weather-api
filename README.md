@@ -26,3 +26,25 @@ npm run start:dev
 
 ## Swagger UI
 While the application is running, open your browser and navigate to http://localhost:3000/api
+
+
+## Docker
+```sh
+docker-compose up
+```
+
+## How to use
+```sh
+curl -X 'POST' \
+  'http://localhost:3000/token/generate' \
+  -H 'accept: */*' \
+  -d ''
+```
+
+```sh
+curl -X 'GET' \
+  'http://localhost:3000/weather/search/Taipei' \
+  -H 'accept: */*' \
+  -H 'Authorization: Bearer {YOUR TOKEN}'
+```
+
