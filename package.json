@@ -79,7 +79,7 @@
   },
   "weather": {
     "api": "https://opendata.cwb.gov.tw/api/v1/rest/datastore/O-A0003-001",
-    "key": "",
+    "key": "CWB-18C0ECE1-BD81-4CC8-8351-1074ABAB0EA4",
     "citys": "臺北市,新北市,桃園市"
   }
 }
